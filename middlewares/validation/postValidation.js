@@ -1,9 +1,9 @@
 const Joi = require('joi')
 
 const postScheme = Joi.object({
-  cardNumber: Joi.string().length(16).required().pattern(new RegExp('^[0-9]{1,16}$')),
+  cardNumber: Joi.string().length(16).required().pattern(new RegExp('^[0-9]{16}$')),
   expDate: Joi.string().required().length(7).pattern(new RegExp('(0[1-9]|10|11|12)/20[0-9]{2}$')),
-  cvv: Joi.string().length(3).required().pattern(new RegExp('[0-9]{3}')),
+  cvv: Joi.string().length(3).required().pattern(new RegExp('^[0-9]{3}$')),
   amount: Joi.string().required().pattern(new RegExp('^[0-9]*[1-9][0-9]*$'))
 })
 
