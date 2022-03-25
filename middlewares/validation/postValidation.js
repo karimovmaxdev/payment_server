@@ -1,10 +1,10 @@
 const Joi = require('joi')
 
 const postScheme = Joi.object({
-  cardNumber: Joi.string().min(16).max(16),
-  expDate: Joi.string().required().min(7).max(7),
-  cvv: Joi.string().required().pattern(new RegExp('[0-9][0-9][0-9]')),
-  amount: Joi.string().required()
+  cardNumber: Joi.string().length(16).required().pattern(new RegExp('[0-9]')),
+  expDate: Joi.string().required().length(7),
+  cvv: Joi.string().length(3).required().pattern(new RegExp('[0-9]')),
+  amount: Joi.string().required().pattern(new RegExp('^[0-9]*[1-9][0-9]*$'))
 })
 
 const postValidation = async (req, res, next) => {
